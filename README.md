@@ -13,7 +13,7 @@ import { GITHUB_TOKEN } from '$env/static/private';
 
 **In your Bun CLI scripts:**
 ```javascript
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // or Bun.env.DATABASE_URL
 ```
 
 This creates a challenge when building shared utility functions that need to work in both environments - the SvelteKit app (requiring special imports) and Bun CLI scripts (using `process.env`).
@@ -55,6 +55,8 @@ import { dev } from '$app/environment';
 console.log('Database:', DATABASE_URL);
 console.log('Dev mode:', dev);
 ```
+
+Note that [$lib alias](https://svelte.dev/docs/kit/$lib) is [automatically handled by Bun](https://bun.com/guides/runtime/tsconfig-paths)
 
 ## Current Support
 
